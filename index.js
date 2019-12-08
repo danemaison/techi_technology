@@ -13,12 +13,12 @@ function init() {
       return res.json();
     })
   ])
-    .then(function(data){
-      loadProfileCards(data)
+    .then(function(data) {
+      loadProfileCards(data);
     })
-    .catch(function(err){
-      console.error(err, "Could not perform request")
-  });
+    .catch(function(err) {
+      console.error(err, "Could not perform request");
+    });
 }
 
 function loadProfileCards(employeeData) {
@@ -50,8 +50,8 @@ function renderCard(name, image, description) {
     const children = cards[i].children;
     if (!classList.contains("loaded")) {
       const fullName = name.first_name + " " + name.last_name;
-      const title = description.title
-      style.backgroundImage = 'url(' + imagesFolder + image.full + ')';
+      const title = description.title;
+      style.backgroundImage = "url(" + imagesFolder + image.full + ")";
 
       if (fullName.toLowerCase() === "michelangelo buonarroti") {
         style.boxShadow = "inset 0 0 0 200px rgba(0,0,0,.25)";
@@ -76,22 +76,23 @@ function renderCard(name, image, description) {
   }
 }
 function applyClickHandlers() {
-  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const mobileLinks = document.querySelectorAll(".mobile-link");
   mobileLinks.forEach(function(link) {
     link.addEventListener("click", function(e) {
-      mobileLinks.forEach(function(link){
-        link.classList.remove('active');
-      })
-      e.currentTarget.classList.add('active');
+      mobileLinks.forEach(function(link) {
+        link.classList.remove("active");
+      });
+      e.currentTarget.classList.add("active");
       toggleMobileMenu();
     });
   });
 
-  document.querySelector(".hamburger").addEventListener("click", toggleMobileMenu);
-
+  document
+    .querySelector(".hamburger")
+    .addEventListener("click", toggleMobileMenu);
 }
 
-function toggleMobileMenu(){
-    document.querySelector('.hamburger').classList.toggle("open");
-    document.querySelector(".mobile-nav").classList.toggle("active");
+function toggleMobileMenu() {
+  document.querySelector(".hamburger").classList.toggle("open");
+  document.querySelector(".mobile-nav").classList.toggle("active");
 }
